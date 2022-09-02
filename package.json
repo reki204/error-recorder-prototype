@@ -12,7 +12,7 @@
   "activationEvents": [
     "onView:errorRecorder-sidebar",
     "onCommand:error-recorder.postError",
-    "*"
+    "onCommand:error-recorder.saveStorage"
   ],
   "main": "./dist/extension.js",
   "contributes": {
@@ -34,15 +34,6 @@
           "icon": "media/checklist.svg",
           "contextualTitle": "ErrorRecorder"
         }
-      ],
-      "explorer": [
-        {
-          "id": "nodeDependencies",
-          "name": "ErrorRecorder",
-          "when": "workspaceHasPackageJSON",
-          "icon": "media/dep.svg",
-          "contextualTitle": "Package Explorer"
-        }
       ]
     },
     "commands": [
@@ -53,6 +44,10 @@
       {
         "command": "error-recorder.postError",
         "title": "postErrorCode"
+      },
+      {
+        "command": "error-recorder.saveStorage",
+        "title": "saveStorage"
       }
     ]
   },

@@ -1,13 +1,20 @@
-import axios from 'axios';
 import * as vscode from 'vscode';
 import { SidebarProvider } from "./SidebarProvider";
-import { PostData, postErrorInfo } from './post';
+import { postErrorInfo } from './post';
+import { saveStorage } from './globalState';
 
 // commands
 export const extensionCommandId: string = 'error-recorder.errorRecorder';
 export const postCommandId: string = 'error-recorder.postError';
+export const saveStorageCommandId: string = 'error-recorder.saveStorage';
 
 export function activate(context: vscode.ExtensionContext) {
+
+	context.subscriptions.push(
+		vscode.commands.registerCommand(
+			saveStorageCommandId, () => saveStorage(context)
+		)
+	);
 
 	// SideBar
 	const sidebarProvider = new SidebarProvider(context.extensionUri);
